@@ -1,9 +1,27 @@
 name: Release Drafter
 
 on:
-  push:
-    branches:
-      - release
+  # push:
+  #   branches:
+  #     - release
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Release version
+        default: Computed by release drafter using config in  `.github/release-drafter.yml`
+      header:
+        description: Markdown added before the template body
+      name:
+        description: Release name
+        default: Computed using `name-template` in `.github/release-drafter.yml`
+      tag:
+        description: Release tag
+        default: Computed using `tag-template` in `.github/release-drafter.yml`
+      publish:
+        description: Publish release?
+        type: boolean
+        default: true
+
 
 permissions:
   contents: read
@@ -20,6 +38,10 @@ jobs:
     steps:
       - uses: release-drafter/release-drafter@v5
         with:
-          publish: true
+          name: ${{ inputs.name }}
+          tag: ${{ inputs.tag }}
+          header: ${{ inputs.header }}
+          version: ${{ inputs.version }}
+          publish: ${{ inputs.publish }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
