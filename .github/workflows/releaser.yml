@@ -1,0 +1,51 @@
+name: Releaser
+run-name: Create a release of ${{ github.ref }} by @${{ github.actor }}
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  # push:
+  #   branches:
+  #     - release
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Release version
+        default: Computed by release drafter using config in  `.github/release-drafter.yml`
+      header:
+        description: Markdown added before the template body
+      name:
+        description: Release name
+        default: Computed using `name-template` in `.github/release-drafter.yml`
+      tag:
+        description: Release tag
+        default: Computed using `tag-template` in `.github/release-drafter.yml`
+      publish:
+        description: Publish release?
+        type: boolean
+        default: true
+
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    permissions:
+      # write permission is required to create a github release
+      contents: write
+      # write permission is required for autolabeler
+      # otherwise, read permission is required at least
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: release-drafter/release-drafter@v5
+        with:
+          name: ${{ inputs.name }}
+          tag: ${{ inputs.tag }}
+          header: ${{ inputs.header }}
+          version: ${{ inputs.version }}
+          publish: ${{ inputs.publish }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,9 +1,19 @@
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
-change-title-escapes: '\<*_&@`' # Disables mentions and codeblocks
-template: |
-  ## Changes
+change-title-escapes: '\<*_&`'
 
-  $CHANGES
+# These labels are enforced with the require-labels workflow
+exclude-labels:
+  - Internal
+  - Trivial
+categories:
+  - title: Features
+    labels:
+      - Feature
+  - title: Fixes
+    labels:
+      - Fix
+
+template: ""
 
 # Automatically bump the version in this fashion by adding these labels to your PR.
 version-resolver:
@@ -21,14 +31,3 @@ version-resolver:
 name-template: 'v$RESOLVED_VERSION'
 tag-template: 'v$RESOLVED_VERSION'
 
-# These labels are enforced with the require-labels workflow
-exclude-labels:
-  - Internal
-  - Trivial
-categories:
-  - title: Features
-    labels:
-      - Feature
-  - title: Fixes
-    labels:
-      - Fix
