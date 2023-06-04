@@ -10,7 +10,7 @@
 ## Release Workflow
 
 - Manually update the `release` branch: https://github.com/urcomputeringpal/release-drafter-demo/compare/release...main
-- Observe new releases be created automatically
+- Create a release with the [releaser workflow](https://github.com/urcomputeringpal/release-drafter-demo/actions/workflows/releaser.yml)
 
 # Features
 
