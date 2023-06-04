@@ -13,8 +13,11 @@ categories:
       - Fix
 
 template: |
+
   $CHANGES
+
 footer: |
+
   Full Changelog: https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
 
 # Automatically bump the version in this fashion by adding these labels to your PR.
