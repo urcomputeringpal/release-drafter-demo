@@ -21,4 +21,8 @@ Results: https://github.com/urcomputeringpal/release-drafter-demo/releases
 
 The official [GitHub Slack Integration](https://github.com/integrations/slack#customize-your-notifications) can be used to subscribe any channel to release notifications. All links in the release are clickable.
 
+```
+/github subscribe urcomputeringpal/release-drafter-demo releases
+```
+
 <img width="434" alt="image" src="https://github.com/urcomputeringpal/release-drafter-demo/assets/47/b042e80d-ae48-492f-b9a2-662321a475d2">
