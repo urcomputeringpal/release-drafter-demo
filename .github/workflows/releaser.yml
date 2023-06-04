@@ -11,18 +11,15 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: Release version
-        default: Computed by release drafter using config in  `.github/release-drafter.yml`
+        description: Override release version
       header:
-        description: Markdown added before the template body
+        description: Markdown string to add before the template body
       name:
-        description: Release name
-        default: Computed using `name-template` in `.github/release-drafter.yml`
+        description: Override name tag
       tag:
-        description: Release tag
-        default: Computed using `tag-template` in `.github/release-drafter.yml`
+        description: Override release tag
       publish:
-        description: Publish release?
+        description: Publish?
         type: boolean
         default: true
 
