@@ -2,6 +2,8 @@
 
 A demo release workflow using https://github.com/marketplace/actions/release-drafter configured to create GitHub Releases in response to workflow_dispatch events. Releases can be created via the GitHub UI or the `gh` cli utility.
 
+Release notes are automatically generated including PRs with the `Feature` or `Fix` label. PRs with the `Internal` or `Trivial` label are excluded. A 'require labels' workflow is required on all PRs to ensure all have one of the above labels. A header can be added to the release at creation time.
+
 ## Development workflow
 
 - Create PRs against main
