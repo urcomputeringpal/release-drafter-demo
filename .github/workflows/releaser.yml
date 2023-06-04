@@ -1,4 +1,8 @@
 name: Releaser
+run-name: Create a release of ${{ github.ref }} by @${{ github.actor }}
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 on:
   # push:
