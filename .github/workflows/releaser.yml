@@ -43,6 +43,7 @@ jobs:
           tag: ${{ inputs.tag }}
           header: ${{ inputs.header }}
           version: ${{ inputs.version }}
-          publish: ${{ inputs.publish }}
+          # Automatically publish releases created on push
+          publish: ${{ github.event_name == 'push' || inputs.publish }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
