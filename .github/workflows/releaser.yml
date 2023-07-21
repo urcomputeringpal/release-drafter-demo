@@ -5,9 +5,9 @@ concurrency:
   cancel-in-progress: true
 
 on:
-  # push:
-  #   branches:
-  #     - release
+  push:
+    branches:
+      - release
   workflow_dispatch:
     inputs:
       version:
